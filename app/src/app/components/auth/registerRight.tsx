@@ -6,6 +6,7 @@ import { BiShow } from "react-icons/bi";
 import { GrFormViewHide } from "react-icons/gr";
 import NextLink from "next/link";
 import Image from "next/image";
+import axios from "axios";
 
 function RegisterRight() {
   const [email, setEmail] = useState("");
@@ -21,6 +22,24 @@ function RegisterRight() {
 
   const handleChangePassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleRegister = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!terms) {
+      setError("You must agree with the terms and conditions.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("/api/register", { email, password });
+      setInfo(response.data.message);
+      setError("");
+    } catch (error: any) {
+      setError(error.response?.data?.message || "Registration failed");
+      setInfo("");
+    }
   };
 
   if (info) {
@@ -49,7 +68,7 @@ function RegisterRight() {
           <p className="nunito-font text-[14px] mt-4 text-gray-500">
             Sign in with your data that you entered during your registration.
           </p>
-          <form className="mt-4">
+          <form className="mt-4" onSubmit={handleRegister}>
             <label
               className="nunito-font text-[14px] text-gray-500"
               htmlFor="Email"
@@ -105,7 +124,10 @@ function RegisterRight() {
             </div>
             {error && <div style={{ color: "red" }}>{error}</div>}
             {info && <div style={{ color: "green" }}>{info}</div>}
-            <button className="w-full h-[40px] bg-[#2144e1] mt-5 text-white nunito-font rounded-md">
+            <button
+              type="submit"
+              className="w-full h-[40px] bg-[#2144e1] mt-5 text-white nunito-font rounded-md"
+            >
               Register
             </button>
           </form>

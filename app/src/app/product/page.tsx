@@ -11,7 +11,7 @@ const Product: React.FC = () => {
       <Navbar />
       <ProductBanner />
       {/* <ProductDescription /> */}
-      <CaseBestSellers />
+      {/* <CaseBestSellers /> */}
       <Footer />
     </>
   );
