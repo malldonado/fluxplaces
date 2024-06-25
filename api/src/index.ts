@@ -31,8 +31,6 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err: any) => console.error("MongoDB connection error:", err));
 
-// Routes
-
 // Endpoint to fetch places suggestions from Google Maps Places API
 app.get("/api/google-maps/places", async (req: Request, res: Response) => {
   const { input } = req.query;

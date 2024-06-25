@@ -7,7 +7,6 @@ import { Pane, Dialog } from "evergreen-ui";
 
 const PopupLocation: React.FC = () => {
   const [isMapOpen, setMapOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [address, setAddress] = useState("");
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [fetchingCurrentLocation, setFetchingCurrentLocation] = useState(false);
@@ -16,22 +15,18 @@ const PopupLocation: React.FC = () => {
   // Track selected suggestion
   const [selectedSuggestion, setSelectedSuggestion] = useState<string>("");
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 900);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const apiBaseUrl = "http://localhost:4000/api/google-maps/places";
 
+  // Function to open the map dialog
   const openMap = () => setMapOpen(true);
+
+  // Function to close the map dialog
   const closeMap = () => setMapOpen(false);
 
+  // Function to fetch address suggestions
   const fetchSuggestions = async () => {
     try {
       if (!address) return;
-
       const response = await axios.get(`${apiBaseUrl}?input=${encodeURIComponent(address)}`);
       setSuggestions(response.data.predictions);
     } catch (error) {
@@ -39,38 +34,46 @@ const PopupLocation: React.FC = () => {
     }
   };
 
+  // Function to handle search button click
   const handleSearch = () => {
     fetchSuggestions();
   };
 
+  // Function to handle input change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setAddress(value);
   };
 
+  // Function to handle key down events
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       fetchSuggestions();
     }
   };
 
+  // Function to get current location
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
       setFetchingCurrentLocation(true);
       navigator.geolocation.getCurrentPosition(
-        async position => {
+        async (position) => {
           const { latitude, longitude } = position.coords;
 
           try {
-            const response = await axios.get(`http://localhost:4000/api/reverse-geocode?lat=${latitude}&lng=${longitude}`);
-            setCurrentAddress(response.data.address); // Assuming the backend returns an 'address' field
+            const response = await axios.get(
+              `http://localhost:4000/api/reverse-geocode?lat=${latitude}&lng=${longitude}`
+            );
+            setCurrentAddress(formatAddress(response.data.address)); // Update here
+            // Close the map dialog after fetching current location
+            setMapOpen(false);
           } catch (error) {
             console.error("Error fetching current address:", error);
           }
 
           setFetchingCurrentLocation(false);
         },
-        error => {
+        (error) => {
           console.error("Error getting current location:", error);
           setFetchingCurrentLocation(false);
         }
@@ -80,11 +83,24 @@ const PopupLocation: React.FC = () => {
     }
   };
 
-  // Handle click on suggestion
+  // Function to handle suggestion click
   const handleSuggestionClick = (suggestion: string) => {
-    setSelectedSuggestion(suggestion);
-    setCurrentAddress(suggestion); // Update currentAddress with selected suggestion
+    setSelectedSuggestion(formatAddress(suggestion)); // Update here
+    setCurrentAddress(formatAddress(suggestion)); // Update here
     setMapOpen(false); // Close the map dialog if open
+  };
+
+  // Utility function to format address
+  const formatAddress = (fullAddress: string) => {
+    // Splitting by comma to separate different parts of the address
+    const parts = fullAddress.split("-");
+  
+    // Assuming parts[0] contains the street and number, and parts[parts.length - 2] contains the city
+    const streetAndNumber = parts[0].trim();
+    const city = parts[1].split(",")[1].trim();
+    // const city = parts[parts.length - 2].trim(); // Assuming city is the second last part
+  
+    return `${streetAndNumber}, ${city}`;
   };
 
   return (
@@ -132,8 +148,10 @@ const PopupLocation: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <button 
-              className={`flex h-[45px] w-full bg-[#2144e1] text-white justify-center items-center rounded-[5px] text-[16px] font-medium mb-5 ${fetchingCurrentLocation ? 'opacity-50 cursor-not-allowed' : ''}`}
+            <button
+              className={`flex h-[45px] w-full bg-[#2144e1] text-white justify-center items-center rounded-[5px] text-[16px] font-medium mb-5 ${
+                fetchingCurrentLocation ? "opacity-50 cursor-not-allowed" : ""
+              }`}
               onClick={getCurrentLocation}
               disabled={fetchingCurrentLocation}
             >
