@@ -7,9 +7,12 @@ import {
   MdKeyboardArrowRight,
   MdOutlineAttachMoney,
 } from "react-icons/md";
-import { RiDiscountPercentLine } from "react-icons/ri";
+import { RiDiscountPercentFill, RiMessage3Fill } from "react-icons/ri";
 import { IoReturnDownBack } from "react-icons/io5";
 import { IoIosSettings } from "react-icons/io";
+import { FaStar } from "react-icons/fa";
+import { BiSolidShoppingBagAlt } from "react-icons/bi";
+import { BsFillCreditCardFill } from "react-icons/bs";
 import Link from "next/link";
 
 interface SidebarProps {}
@@ -48,18 +51,23 @@ const Sidebar: React.FC<SidebarProps> = () => {
         // { id: 1, label: "Dashboard", route: "/seller", emoji: <MdSpaceDashboard className="w-6 h-6 mr-2" /> },
         { id: 1, label: "Products", route: "/seller-products", emoji: <BsPersonFill className="w-6 h-6 mr-2" /> },
         { id: 2, label: "Orders", route: "/seller-orders", emoji: <MdSell className="w-6 h-6 mr-2" /> },
-        { id: 3, label: "Finance", route: "/seller-finance", emoji: <MdOutlineAttachMoney className="w-6 h-6 mr-2" /> },
-        { id: 4, label: "Discount", route: "/seller-discount", emoji: <RiDiscountPercentLine className="w-6 h-6 mr-2" /> },
-        { id: 5, label: "Settings", route: "/seller-settings", emoji: <IoIosSettings className="w-6 h-6 mr-2" /> },
-        { id: 6, label: "Account", route: "/panel-profile", emoji: <IoReturnDownBack className="w-6 h-6 mr-2" /> },
-        { id: 7, label: "Home", route: "/", emoji: <IoReturnDownBack className="w-6 h-6 mr-2" /> },
+        { id: 3, label: "Finance", route: "/seller-finance", emoji: <BsFillCreditCardFill className="w-6 h-6 mr-2" /> },
+        { id: 4, label: "Discount", route: "/seller-discount", emoji: <RiDiscountPercentFill className="w-6 h-6 mr-2" /> },
+        { id: 5, label: "Message", route: "/seller-message", emoji: <RiMessage3Fill className="w-6 h-6 mr-2" /> },
+        { id: 6, label: "Settings", route: "/seller-settings", emoji: <IoIosSettings className="w-6 h-6 mr-2" /> },
+        { id: 7, label: "Account", route: "/panel-profile", emoji: <IoReturnDownBack className="w-6 h-6 mr-2" /> },
+        { id: 8, label: "Home", route: "/", emoji: <IoReturnDownBack className="w-6 h-6 mr-2" /> },
       ]
     : [
         // { id: 1, label: "Dashboard", route: "/account", emoji: <MdSpaceDashboard className="w-6 h-6 mr-2" /> },
         { id: 1, label: "Profile", route: "/panel-profile", emoji: <BsPersonFill className="w-6 h-6 mr-2" /> },
-        { id: 2, label: "Seller", route: "/seller-products", emoji: <MdSell className="w-6 h-6 mr-2" /> },
-        { id: 3, label: "Settings", route: "/panel-settings", emoji: <IoIosSettings className="w-6 h-6 mr-2" /> },
-        { id: 4, label: "Home", route: "/", emoji: <IoReturnDownBack className="w-6 h-6 mr-2" /> },
+        { id: 2, label: "Wishlist", route: "/panel-wishlist", emoji: <FaStar className="w-6 h-6 mr-2" /> },
+        { id: 3, label: "Discount", route: "/panel-discount", emoji: <RiDiscountPercentFill className="w-6 h-6 mr-2" /> },
+        { id: 4, label: "Message", route: "/panel-message", emoji: <RiMessage3Fill className="w-6 h-6 mr-2" /> },
+        { id: 5, label: "My shopping", route: "/panel-shopping", emoji: <BiSolidShoppingBagAlt className="w-6 h-6 mr-2" /> },
+        { id: 6, label: "Wanna Sell", route: "/seller-products", emoji: <MdSell className="w-6 h-6 mr-2" /> },
+        { id: 7, label: "Settings", route: "/panel-settings", emoji: <IoIosSettings className="w-6 h-6 mr-2" /> },
+        { id: 8, label: "Home", route: "/", emoji: <IoReturnDownBack className="w-6 h-6 mr-2" /> },
       ];
 
   const breadCrumbItems: SidebarItem[] = [

@@ -10,6 +10,8 @@ import PopupLogin from "../popup/popupLogin";
 import PopupCart from "../popup/popupCart";
 import NextLink from "next/link";
 import Image from "next/image";
+import { SlStar } from "react-icons/sl";
+import Link from "next/link";
 
 interface NavigationItem {
   name: string;
@@ -176,18 +178,6 @@ const Navbar: React.FC = () => {
                     ))}
                   </Tab.Panels>
                 </Tab.Group>
-
-                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="flow-root">
-                    <NextLink
-                      href={"/stores"}
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Stores
-                    </NextLink>
-                  </div>
-                </div>
-
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
                     <a
@@ -325,13 +315,6 @@ const Navbar: React.FC = () => {
                     )}
                   </Popover>
                 ))}
-
-                <NextLink
-                  href={"/stores"}
-                  className="flex items-center text-base font-medium text-black"
-                >
-                  Stores
-                </NextLink>
                 <PopupLocation />
               </div>
             </Popover.Group>
@@ -358,6 +341,11 @@ const Navbar: React.FC = () => {
                   <span className="sr-only">Search</span>
                   <SearchIndex />
                 </a>
+              </div>
+              <div className="flex">
+                <Link href="/wishlist" className="p-2 text-black">
+                <SlStar className="text-[20px]" />
+                </Link>
               </div>
               <div className="flow-root">
                 <a href="#" className="flex items-center p-2 relative">

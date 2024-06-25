@@ -9,17 +9,17 @@ const Terms: React.FC = () => {
       <div className="mt-2 bg-gray-100">
         <div className="mx-20 py-10">
             <p>
-            <strong>Welcome to Cartplaces!</strong>
+            <strong>Welcome to Fluxplaces!</strong>
             </p>
             <br />
             <p>
             These terms and conditions outline the rules and regulations for the
-            use of Cartplaces Software S.A's Website, located at{" "}
-            <a href="http://cartplaces.com.br/">http://cartplaces.com.br/</a>.
+            use of Fluxplaces Software S.A's Website, located at{" "}
+            <a href="http://fluxplaces.com.br/">http://fluxplaces.com.br/</a>.
             </p>
             <p>
             By accessing this website, we assume you accept these terms and
-            conditions. Do not continue to use Cartplaces if you do not agree to
+            conditions. Do not continue to use Fluxplaces if you do not agree to
             all of the terms and conditions stated on this page.
             </p>
             <br />
@@ -29,7 +29,7 @@ const Terms: React.FC = () => {
             <br />
             <p>
             The website uses cookies to help personalize your online experience.
-            By accessing Cartplaces, you agreed to use the required cookies.
+            By accessing Fluxplaces, you agreed to use the required cookies.
             </p>
             <p>
             Cookies are text files placed on your hard disk by a web page server.
@@ -54,33 +54,33 @@ const Terms: React.FC = () => {
             </p>
             <br />
             <p>
-            Unless otherwise stated, Cartplaces Software S.A and/or its licensors
-            own the intellectual property rights for all material on Cartplaces.
+            Unless otherwise stated, Fluxplaces Software S.A and/or its licensors
+            own the intellectual property rights for all material on Fluxplaces.
             All intellectual property rights are reserved.
             </p>
             <p>You must not:</p>
             <ul>
-            <li>Republish material from Cartplaces</li>
-            <li>Sell, rent, or sub-license material from Cartplaces</li>
-            <li>Reproduce, duplicate, or copy material from Cartplaces</li>
-            <li>Redistribute content from Cartplaces</li>
+            <li>Republish material from Fluxplaces</li>
+            <li>Sell, rent, or sub-license material from Fluxplaces</li>
+            <li>Reproduce, duplicate, or copy material from Fluxplaces</li>
+            <li>Redistribute content from Fluxplaces</li>
             </ul>
             <p>This Agreement shall begin on the date hereof.</p>
             <p>
             Parts of this website offer users an opportunity to post and exchange
-            opinions and information in certain areas. Cartplaces Software S.A
+            opinions and information in certain areas. Fluxplaces Software S.A
             does not filter, edit, publish, or review Comments prior to their
             presence on the website. Comments do not reflect the views and
-            opinions of Cartplaces Software S.A, its agents, and/or affiliates.
+            opinions of Fluxplaces Software S.A, its agents, and/or affiliates.
             Comments reflect the views and opinions of the person who posts their
             views and opinions. To the extent permitted by applicable laws,
-            Cartplaces Software S.A shall not be liable for the Comments or for
+            Fluxplaces Software S.A shall not be liable for the Comments or for
             any liability, damages, or expenses caused and/or suffered as a result
             of any use of and/or posting of and/or appearance of the Comments on
             this website.
             </p>
             <p>
-            Cartplaces Software S.A reserves the right to monitor all Comments and
+            Fluxplaces Software S.A reserves the right to monitor all Comments and
             to remove any Comments which can be considered inappropriate,
             offensive, or cause a breach of these Terms and Conditions.
             </p>
@@ -106,7 +106,7 @@ const Terms: React.FC = () => {
             </li>
             </ul>
             <p>
-            You hereby grant Cartplaces Software S.A a non-exclusive license to
+            You hereby grant Fluxplaces Software S.A a non-exclusive license to
             use, reproduce, edit and authorize others to use, reproduce and edit
             any of your Comments in any and all forms, formats, or media.
             </p>
@@ -159,7 +159,7 @@ const Terms: React.FC = () => {
             that: (a) the link would not make us look unfavorably to ourselves or
             to our accredited businesses; (b) the organization does not have any
             negative records with us; (c) the benefit to us from the visibility of
-            the hyperlink compensates the absence of Cartplaces Software S.A; and
+            the hyperlink compensates the absence of Fluxplaces Software S.A; and
             (d) the link is in the context of general resource information.
             </p>
             <p>
@@ -171,7 +171,7 @@ const Terms: React.FC = () => {
             <p>
             If you are one of the organizations listed in paragraph 2 above and
             are interested in linking to our website, you must inform us by
-            sending an e-mail to Cartplaces Software S.A. Please include your
+            sending an e-mail to Fluxplaces Software S.A. Please include your
             name, your organization name, contact information as well as the URL
             of your site, a list of any URLs from which you intend to link to our
             Website, and a list of the URLs on our site to which you would like to
@@ -188,7 +188,7 @@ const Terms: React.FC = () => {
             </li>
             </ul>
             <p>
-            No use of Cartplaces Software S.A's logo or other artwork will be
+            No use of Fluxplaces Software S.A's logo or other artwork will be
             allowed for linking absent a trademark license agreement.
             </p>
             <p>iFrames:</p>
