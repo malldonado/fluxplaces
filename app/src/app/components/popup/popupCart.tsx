@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { LiaShoppingBagSolid } from "react-icons/lia";
 import { SlBag } from "react-icons/sl";
 
 interface Product {

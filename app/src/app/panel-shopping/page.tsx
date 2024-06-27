@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar/navbar";
 import Sidebar from "../components/sidebar/sidebar";
 
-const Seller: React.FC = () => {
+const PanelShopping: React.FC = () => {
   return (
     <div className="bg-[#f9fafb] h-[100vh]">
       <Navbar />
@@ -13,4 +13,4 @@ const Seller: React.FC = () => {
   );
 }
 
-export default Seller;
+export default PanelShopping;

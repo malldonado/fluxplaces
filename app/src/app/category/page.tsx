@@ -3,7 +3,7 @@ import Navbar from '../components/navbar/navbar';
 import Category from '../components/category/category';
 import Footer from '../components/footer/footer';
 
-const Page: React.FC = () => {
+const CategoryPage: React.FC = () => {
   return (
     <>
       <Navbar />
@@ -13,4 +13,4 @@ const Page: React.FC = () => {
   );
 }
 
-export default Page;
+export default CategoryPage;

@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar/navbar";
 import Sidebar from "../components/sidebar/sidebar";
 
-const Profile: React.FC = () => {
+const PanelProfile: React.FC = () => {
   return (
     <div className="bg-[#f9fafb] h-[100vh]">
       <Navbar />
@@ -13,4 +13,4 @@ const Profile: React.FC = () => {
   );
 }
 
-export default Profile;
+export default PanelProfile;
