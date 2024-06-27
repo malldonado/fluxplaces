@@ -108,6 +108,14 @@ function RegisterRight() {
             <button className="w-full h-[40px] bg-[#2144e1] mt-5 text-white nunito-font rounded-md">
               Register
             </button>
+            {/* <p className="pt-4 nunito-font text-gray-500 text-[14px] font-normal">
+              Already have an Seller account? {" "}
+              <NextLink href="/register-seller" passHref>
+                <span className="text-[#2144e1] text-[15px] font-bold">
+                  Sign up
+                </span>
+              </NextLink>
+            </p> */}
           </form>
         </div>
       </div>
