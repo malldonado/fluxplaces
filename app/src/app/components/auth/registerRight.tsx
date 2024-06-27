@@ -106,16 +106,16 @@ function RegisterRight() {
             {error && <div style={{ color: "red" }}>{error}</div>}
             {info && <div style={{ color: "green" }}>{info}</div>}
             <button className="w-full h-[40px] bg-[#2144e1] mt-5 text-white nunito-font rounded-md">
-              Register
+              Sign up
             </button>
-            {/* <p className="pt-4 nunito-font text-gray-500 text-[14px] font-normal">
-              Already have an Seller account? {" "}
-              <NextLink href="/register-seller" passHref>
+            <p className="pt-4 nunito-font text-gray-500 text-[14px] font-normal">
+              I Already have an account {" "}
+              <NextLink href="/login" passHref>
                 <span className="text-[#2144e1] text-[15px] font-bold">
-                  Sign up
+                  Sign in
                 </span>
               </NextLink>
-            </p> */}
+            </p>
           </form>
         </div>
       </div>

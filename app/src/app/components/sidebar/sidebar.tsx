@@ -15,7 +15,7 @@ import {
   IoLibraryOutline,
   IoFileTrayStackedOutline,
   IoStorefrontOutline,
-  IoBarChartOutline
+  IoBarChartOutline,
 } from "react-icons/io5";
 import { SlStar } from "react-icons/sl";
 import { IoIosSettings } from "react-icons/io";
@@ -97,14 +97,14 @@ const Sidebar: React.FC<SidebarProps> = () => {
           route: "/seller-settings",
           emoji: <IoSettingsOutline className="w-5 h-5 mr-2" />,
         },
+        // {
+        //   id: 8,
+        //   label: "Account",
+        //   route: "/panel-profile",
+        //   emoji: <IoExitOutline className="w-5 h-5 mr-2" />,
+        // },
         {
           id: 8,
-          label: "Account",
-          route: "/panel-profile",
-          emoji: <IoExitOutline className="w-5 h-5 mr-2" />,
-        },
-        {
-          id: 9,
           label: "Home",
           route: "/",
           emoji: <IoExitOutline className="w-5 h-5 mr-2" />,
@@ -147,50 +147,50 @@ const Sidebar: React.FC<SidebarProps> = () => {
           route: "/panel-shopping",
           emoji: <IoBagOutline className="w-5 h-5 mr-2" />,
         },
+        // {
+        //   id: 7,
+        //   label: "Wanna Sell",
+        //   route: "/seller",
+        //   emoji: <IoStorefrontOutline className="w-5 h-5 mr-2" />,
+        // },
         {
           id: 7,
-          label: "Wanna Sell",
-          route: "/seller",
-          emoji: <IoStorefrontOutline className="w-5 h-5 mr-2" />,
-        },
-        {
-          id: 8,
           label: "Settings",
           route: "/panel-settings",
           emoji: <IoSettingsOutline className="w-5 h-5 mr-2" />,
         },
         {
-          id: 9,
+          id: 8,
           label: "Home",
           route: "/",
           emoji: <IoExitOutline className="w-5 h-5 mr-2" />,
         },
       ];
 
-  const breadCrumbItems: SidebarItem[] = [
-    {
-      id: 1,
-      label: "Home",
-      route: "/",
-      emoji: <MdKeyboardArrowRight className="text-[20px] fill-black" />,
-    },
-    {
-      id: 2,
-      label: "Account",
-      route: "/account",
-      emoji: <MdKeyboardArrowRight className="text-[20px] fill-black" />,
-    },
-    ...(isSellerRoute
-      ? [
-          {
-            id: 3,
-            label: "Seller",
-            route: "/seller",
-            emoji: <MdKeyboardArrowRight className="text-[20px] fill-black" />,
-          },
-        ]
-      : []),
-  ];
+  // const breadCrumbItems: SidebarItem[] = [
+  //   {
+  //     id: 1,
+  //     label: "Home",
+  //     route: "/",
+  //     emoji: <MdKeyboardArrowRight className="text-[20px] fill-black" />,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Account",
+  //     route: "/account",
+  //     emoji: <MdKeyboardArrowRight className="text-[20px] fill-black" />,
+  //   },
+  //   ...(isSellerRoute
+  //     ? [
+  //         {
+  //           id: 3,
+  //           label: "Seller",
+  //           route: "/seller",
+  //           emoji: <MdKeyboardArrowRight className="text-[20px] fill-black" />,
+  //         },
+  //       ]
+  //     : []),
+  // ];
 
   const handleItemClick = (item: SidebarItem) => {
     setSelectedItem(item);

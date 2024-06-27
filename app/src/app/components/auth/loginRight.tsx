@@ -100,7 +100,7 @@ const LoginRight: React.FC = () => {
               </span>
             </div>
             <button className="w-full h-[40px] bg-[#2144e1] mt-4 text-white nunito-font rounded-md">
-              Login
+              Sign in
             </button>
             <span className="w-full cursor-pointer h-[40px] bg-[#3870ff] mt-4 text-white nunito-font rounded-md flex justify-center items-center">
               <FaGoogle className="mr-2" />
