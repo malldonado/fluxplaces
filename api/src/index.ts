@@ -1,25 +1,29 @@
 import express, { Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import axios from "axios";
 import dotenv from "dotenv";
 import requestIp from "request-ip";
-import cors from "cors";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-
-import User, { IUser } from "./models/User";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 const mongoURI = process.env.MONGO_URI as string;
+const googleMapsApiKey = process.env.YOUR_GOOGLE_MAPS_API_KEY as string;
 
-// Middlewares
+// Bodyparser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestIp.mw());
-app.use(cors());
+
+// CORS Middleware
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 // MongoDB connection
 mongoose
@@ -27,28 +31,77 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err: any) => console.error("MongoDB connection error:", err));
 
-// Registration endpoint
-app.post("/api/register", async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+// Endpoint to fetch places suggestions from Google Maps Places API
+app.get("/api/google-maps/places", async (req: Request, res: Response) => {
+  const { input } = req.query;
+
+  if (!input) {
+    return res.status(400).json({ error: "Input parameter is required" });
+  }
 
   try {
-    let user = await User.findOne({ email });
-    if (user) {
-      return res.status(400).json({ message: "User already exists" });
+    const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(
+      input as string
+    )}&key=${googleMapsApiKey}&components=country:br`;
+
+    const response = await axios.get(url);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching from Google Maps API:", error);
+    res
+      .status(500)
+      .json({ error: "Failed to fetch data from Google Maps API" });
+  }
+});
+
+// Endpoint to fetch user location based on IP (using ipinfo.io for demonstration)
+app.get("/api/user-location", async (req: Request, res: Response) => {
+  try {
+    const ip = req.clientIp; // Using clientIp from request-ip
+    if (!ip) {
+      throw new Error("IP address not found in the request");
     }
 
-    user = new User({ email, password });
-    await user.save();
+    // Simulate fetching location based on IP for demonstration
+    const response = await axios.get(`https://ipinfo.io/${ip}/json`);
+    const { loc } = response.data;
+    if (!loc) {
+      throw new Error("Location data not found");
+    }
 
-    const payload = { userId: user._id };
-    const token = jwt.sign(payload, process.env.JWT_SECRET as string, {
-      expiresIn: "1h",
-    });
-
-    res.status(201).json({ message: "User registered successfully", token });
+    const [latitude, longitude] = loc.split(",");
+    res.json({ latitude, longitude });
   } catch (error) {
-    console.error("Registration error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    console.error("Error fetching user location:", error);
+    res.status(500).json({ error: "Failed to fetch user location" });
+  }
+});
+
+// Endpoint to perform reverse geocoding (latitude and longitude to address)
+app.get("/api/reverse-geocode", async (req: Request, res: Response) => {
+  const { lat, lng } = req.query;
+
+  if (!lat || !lng) {
+    return res
+      .status(400)
+      .json({ error: "Latitude and longitude are required" });
+  }
+
+  try {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${googleMapsApiKey}`;
+
+    const response = await axios.get(url);
+    const { results } = response.data;
+
+    if (results && results.length > 0) {
+      const address = results[0].formatted_address;
+      res.json({ address });
+    } else {
+      throw new Error("No results found");
+    }
+  } catch (error) {
+    console.error("Error fetching address from coordinates:", error);
+    res.status(500).json({ error: "Failed to fetch address from coordinates" });
   }
 });
 

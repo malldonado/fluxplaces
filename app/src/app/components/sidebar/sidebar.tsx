@@ -223,7 +223,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
                     className={`inline-flex items-center px-2 py-3 rounded-sm w-full mb-1 ${
                       pathname === item.route
                         ? "text-white bg-[#5d87ff] active"
-                        : "text-blue-700 hover:text-white hover:bg-black bg-white"
+                        : "text-blue-700 hover:text-white hover:bg-blue-700 bg-white"
                     }`}
                   >
                     {item.emoji}
