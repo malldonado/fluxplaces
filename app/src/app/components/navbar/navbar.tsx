@@ -343,9 +343,9 @@ const Navbar: React.FC = () => {
                 </a>
               </div>
               <div className="flex">
-                <Link href="/wishlist" className="p-2 text-black">
+                <NextLink href="/panel-wishlist" className="p-2 text-black">
                 <SlStar className="text-[20px]" />
-                </Link>
+                </NextLink>
               </div>
               <div className="flow-root">
                 <a href="#" className="flex items-center p-2 relative">
